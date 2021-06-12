@@ -66,7 +66,7 @@ pub mod tests {
     use serde_json::json;
 
     #[actix_rt::test]
-    async fn test_index_get() {
+    async fn test_index() {
         let mut app = test::init_service(App::new().route("/", web::get().to(index))).await;
         let req = test::TestRequest::with_uri("/").to_request();
         let resp = test::call_service(&mut app, req).await;
@@ -165,7 +165,7 @@ pub mod tests {
             .expect("pool failed");
 
         sqlx::query("INSERT INTO orders (item_id, table_number, preparation_time)\
-         VALUES (1, 2, 10), (2,2,10), (3, 2, 10)")
+         VALUES (1, 2, 10), (2,2,10), (3, 2, 10), (1, 2, 10)")
             .execute(&pool)
             .await
             .expect("INSERT test failed");
@@ -187,7 +187,7 @@ pub mod tests {
             .try_get("count")
             .unwrap();
 
-        assert_eq!(count, 2);
+        assert_eq!(count, 3);
 
         let count: i64 =
             sqlx::query("SELECT COUNT(id) as count from orders where table_number=2 and status='served'")
