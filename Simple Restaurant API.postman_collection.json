@@ -1,0 +1,222 @@
+{
+	"info": {
+		"_postman_id": "9838a702-4841-49f1-8f35-3e65706c7156",
+		"name": "Simple Restaurant API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "127.0.0.1:8080/table/1/items",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"item_ids\": [1,2,3]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "127.0.0.1:8080/table/1/items",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"table",
+						"1",
+						"items"
+					]
+				},
+				"description": "Create Items for table"
+			},
+			"response": []
+		},
+		{
+			"name": "127.0.0.1:8080/table/1/items?remaining=true",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"item_ids\": [1, 2, 3]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "127.0.0.1:8080/table/1/items?remaining=false",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"table",
+						"1",
+						"items"
+					],
+					"query": [
+						{
+							"key": "remaining",
+							"value": "false"
+						}
+					]
+				},
+				"description": "Get remaining items for a table"
+			},
+			"response": []
+		},
+		{
+			"name": "127.0.0.1:8080/table/1/items?remaining=false",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"item_ids\": [1, 2, 3]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "127.0.0.1:8080/table/1/items?remaining=false",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"table",
+						"1",
+						"items"
+					],
+					"query": [
+						{
+							"key": "remaining",
+							"value": "false"
+						}
+					]
+				},
+				"description": "Get all items for a table"
+			},
+			"response": []
+		},
+		{
+			"name": "127.0.0.1:8080/table/1/items/3",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"item_ids\": [1, 2, 3]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "127.0.0.1:8080/table/1/items/3",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"table",
+						"1",
+						"items",
+						"3"
+					]
+				},
+				"description": "Update status of item for a table"
+			},
+			"response": []
+		},
+		{
+			"name": "127.0.0.1:8080/table/1/items/2",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"item_ids\": [1, 2, 3]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "127.0.0.1:8080/table/1/items/2",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"table",
+						"1",
+						"items",
+						"2"
+					]
+				},
+				"description": "Get specific item for a table"
+			},
+			"response": []
+		},
+		{
+			"name": "127.0.0.1:8080/table/1/items/2",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "127.0.0.1:8080/table/1/items/2",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"table",
+						"1",
+						"items",
+						"2"
+					]
+				},
+				"description": "Delete specific item from a table"
+			},
+			"response": []
+		}
+	]
+}
