@@ -27,13 +27,13 @@ Post this, application server shall be up and running at -
 
 http://127.0.0.1:8080/
 
-##Client
+## Client
 Server would be accessible from any REST client.
 
 #### Rust HTTP client
-Please see here: 
+Please see here: [README](https://github.com/vermaarun/restaurant-api/blob/main/client/README.md)
 
 #### Postman collection
 I've included postman collection for client purpose - `Simple Restaurant API.postman_collection.json`
 
-Please see Sample Response here. 
+Please see Sample Response [here](https://github.com/vermaarun/restaurant-api/blob/main/server/README.md).
