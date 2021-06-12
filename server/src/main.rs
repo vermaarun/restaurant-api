@@ -216,18 +216,18 @@ pub mod tests {
             .expect("pool failed");
 
         sqlx::query("INSERT INTO orders (item_id, table_number, preparation_time)\
-         VALUES (1, 1, 10)")
+         VALUES (1, 6, 10)")
             .execute(&pool)
             .await
             .expect("INSERT test failed");
 
         let mut app =
             test::init_service(App::new().data(pool.clone()).service(handler::delete)).await;
-        let req = test::TestRequest::with_uri("/table/1/items/1").method(Method::DELETE).to_request();
+        let req = test::TestRequest::with_uri("/table/6/items/1").method(Method::DELETE).to_request();
         let resp = test::call_service(&mut app, req).await;
         assert_eq!(resp.status(), StatusCode::OK);
 
-        let count: i64 = sqlx::query("SELECT COUNT(id) as count from orders where table_number=1 and item_id=1")
+        let count: i64 = sqlx::query("SELECT COUNT(id) as count from orders where table_number=6 and item_id=1")
             .fetch_one(&pool)
             .await
             .expect("SELECT COUNT failed")
