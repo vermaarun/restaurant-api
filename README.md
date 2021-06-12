@@ -6,8 +6,6 @@ Simple Restaurant API built with ❤️ using RUST
 ## Clone the repository
 `git clone https://github.com/vermaarun/restaurant-api.git` 
 
-`cd restaurant-api/server`
-
 ## Install Rust
 https://www.rust-lang.org/tools/install
 
@@ -17,10 +15,13 @@ https://docs.docker.com/get-docker/
 
 `docker-compose up -d`
 
-## Run Test
+## Server
+Change to server directory`cd restaurant-api/server`
+
+### Run Test
 `cargo test`
 
-## Run Application
+### Run Application
 `cargo run`
 
 Post this, application server shall be up and running at -
@@ -34,6 +35,6 @@ Server would be accessible from any REST client.
 Please see here: [README](https://github.com/vermaarun/restaurant-api/blob/main/client/README.md)
 
 #### Postman collection
-I've included postman collection for client purpose - `Simple Restaurant API.postman_collection.json`
+Please see Postman collection [here](https://github.com/vermaarun/restaurant-api/blob/main/Simple%20Restaurant%20API.postman_collection.json)
 
 Please see Sample Response [here](https://github.com/vermaarun/restaurant-api/blob/main/server/README.md).
