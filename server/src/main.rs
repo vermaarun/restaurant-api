@@ -155,6 +155,82 @@ pub mod tests {
     }
 
     #[actix_rt::test]
+    async fn test_items_get_remaining() {
+
+        // build with only one connection
+        let pool = PgPoolOptions::new()
+            .max_connections(1)
+            .connect("postgres://postgres:password@0.0.0.0/test")
+            .await
+            .expect("pool failed");
+
+        sqlx::query("INSERT INTO orders (item_id, table_number, preparation_time)\
+         VALUES (1, 8, 10), (2, 8, 10), (3, 8, 10)")
+            .execute(&pool)
+            .await
+            .expect("INSERT test failed");
+
+        let mut app =
+            test::init_service(App::new().data(pool.clone()).service(handler::list)).await;
+        let req = test::TestRequest::with_uri("/table/8/items?remaining=true").method(Method::GET).to_request();
+        let resp = test::call_service(&mut app, req).await;
+        assert_eq!(resp.status(), StatusCode::OK);
+
+        let count: i64 =
+            sqlx::query("SELECT COUNT(id) as count from orders where table_number=8 and status='pending'")
+                .fetch_one(&pool)
+                .await
+                .expect("SELECT COUNT failed")
+                .try_get("count")
+                .unwrap();
+
+        assert_eq!(count, 3);
+
+        sqlx::query("DELETE from orders where table_number=8")
+            .execute(&pool)
+            .await
+            .expect("DELETE FAILED");
+    }
+
+    #[actix_rt::test]
+    async fn test_items_get_all() {
+
+        // build with only one connection
+        let pool = PgPoolOptions::new()
+            .max_connections(1)
+            .connect("postgres://postgres:password@0.0.0.0/test")
+            .await
+            .expect("pool failed");
+
+        sqlx::query("INSERT INTO orders (item_id, table_number, preparation_time)\
+         VALUES (1, 9, 10), (2, 9, 10), (3, 9, 10)")
+            .execute(&pool)
+            .await
+            .expect("INSERT test failed");
+
+        let mut app =
+            test::init_service(App::new().data(pool.clone()).service(handler::list)).await;
+        let req = test::TestRequest::with_uri("/table/9/items?remaining=false").method(Method::GET).to_request();
+        let resp = test::call_service(&mut app, req).await;
+        assert_eq!(resp.status(), StatusCode::OK);
+
+        let count: i64 =
+            sqlx::query("SELECT COUNT(id) as count from orders where table_number=9")
+                .fetch_one(&pool)
+                .await
+                .expect("SELECT COUNT failed")
+                .try_get("count")
+                .unwrap();
+
+        assert_eq!(count, 3);
+
+        sqlx::query("DELETE from orders where table_number=9")
+            .execute(&pool)
+            .await
+            .expect("DELETE FAILED");
+    }
+
+    #[actix_rt::test]
     async fn test_items_update() {
 
         // build with only one connection
