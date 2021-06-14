@@ -35,6 +35,6 @@ Server would be accessible from any REST client.
 Please see here: [README](https://github.com/vermaarun/restaurant-api/blob/main/client/README.md)
 
 #### Postman collection
-Please see Postman collection [here](https://github.com/vermaarun/restaurant-api/blob/main/Simple%20Restaurant%20API.postman_collection.json)
+Please see [Postman](https://www.postman.com/product/rest-client/) collection [here](https://github.com/vermaarun/restaurant-api/blob/main/Simple%20Restaurant%20API.postman_collection.json)
 
 Please see Sample Response [here](https://github.com/vermaarun/restaurant-api/blob/main/server/README.md).
